@@ -1,3 +1,0 @@
-[35m[1mConsolidate compiler generated dependencies of target high_level_ctrl[0m
-[ 33%] [32mBuilding CXX object CMakeFiles/high_level_ctrl.dir/src/high_level_ctrl.cpp.o[0m
-[ 66%] [32mBuilding CXX object CMakeFiles/high_level_ctrl.dir/src/common/ros2_sport_client.cpp.o[0m
