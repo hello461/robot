@@ -1,84 +1,82 @@
-# Unitree Go2 入门项目  
+# Unitree Go2 Introductory Project  
 
-本项目适合有一定基础并且想要接触 Unitree Go2 的同学，可以投入约2个月，难度适中，可帮助快速掌握机器狗 ROS2 开发基础。  
-b站地址：https://www.bilibili.com/video/BV1caWQzdE3G/?spm_id_from=333.337.search-card.all.click&vd_source=4bd0448ccc277efab1a6915315abd6b9
+This project is suitable for students with some basic knowledge who want to get started with Unitree Go2. It can be completed in about 2 months and has a moderate level of 
+difficulty. It can help you quickly master the basics of robot dog ROS2 development.
 
+Bilibili address:https://www.bilibili.com/video/BV1caWQzdE3G/?spm_id_from=333.337.search-card.all.click&vd_source=4bd0448ccc277efab1a6915315abd6b9
 
-## 🛠️ 硬件准备  
-1. Unitree Go2 EDU 版机器狗  
-2. 安装 ROS2 Humble 的 PC 主机  
-3. 5-10米网线（用于机器狗与PC连接）  
+## 🛠️ Hardware Preparation  
+1.Unitree Go2 EDU Edition Robot Dog  
+2.PC host with ROS2 Humble installed  
+3.5-10 meter network cable (for connecting the robot dog to the PC)  
 
+##✅ Feature implemented  
+-Visualization of the robot dog model in Rviz2  
+-Point cloud accumulation and`PointCloud2_to_LaserScan`Message Transformation  
+-Supports official ROS2 keyboard control node  
+-Based on IMU fused odometry (odom) data  
+-Integrating slam-toolbox to implement mapping functionality  
 
-## ✅ 已实现功能  
-- Rviz2 中机器狗模型可视化  
-- 点云累积及 `PointCloud2_to_LaserScan` 消息转换  
-- 支持 ROS2 官方键盘控制节点  
-- 基于 IMU 融合里程计（odom）数据  
-- 集成 slam-toolbox 实现建图功能  
+##🚧 Features to be completed  
+-Autonomous navigation function (core features yet to be developed)  
 
+##🔧 Development Environment Configuration  
 
-## 🚧 待完成功能  
-- 自主导航功能（核心待开发）  
+We recommend referring to the following tutorial to complete the network environment setup (**Setting up the network environment is very important and must be completed.**）：  
+-Courses taught by Professor Zhao Xuzuo:[ROS2: From Beginner to Expert](https://www.bilibili.com/video/BV1vv5YzBEQH?spm_id_from=333.788.videopod.episodes&vd_source=4bd0448ccc277efab1a6915315abd6b9&p=5)(More suitable for beginners)  
+-Utree official documentation:[Go2 Developer Quick Start](https://support.unitree.com/home/zh/developer/Quick_start)  
 
-
-## 🔧 开发环境配置  
-推荐参考以下教程完成网络环境搭建（**网络环境搭建十分重要，一定要完成**）：  
-- 赵虚左老师课程：[ROS2 入门到实战](https://www.bilibili.com/video/BV1vv5YzBEQH?spm_id_from=333.788.videopod.episodes&vd_source=4bd0448ccc277efab1a6915315abd6b9&p=5)（更适合新手）  
-- 宇树官方文档：[Go2 开发者快速入门](https://support.unitree.com/home/zh/developer/Quick_start)  
-
-
-## 📦 依赖安装  
-1. 安装机器人定位融合包  
+##📦 Dependency Installation  
+1.Install robot positioning fusion package  
    ```bash
    sudo apt update && sudo apt install ros-humble-robot-localization
    ```  
 
-2. 安装建图工具  
+2.Install mapping tools  
    ```bash
-   sudo apt update && sudo apt install ros-humble-slam-toolbox
+   sudo apt update&& sudo apt install ros-humble-slam-toolbox
    ```  
 
-3. 其他依赖：编译时若提示缺少包，可根据报错信息用 `sudo apt install ros-humble-<缺失包名>` 安装  
+3.Other dependencies: If the compiler prompts that packages are missing, you can use the missing packages according to the error message.`sudo apt install ros-humble-<missing package name>`Install
 
 
-## 🚀 快速启动步骤  
+##🚀 Quick Start Steps  
 
-1. **创建并进入工作空间**  
+1. **Create and enter a workspace**  
    ```bash
    mkdir -p go2_ws_toolbox/src && cd go2_ws_toolbox/src
    ```  
 
-2. **克隆仓库**  
+2. **Cloning repository**  
    ```bash
    git clone git@github.com:FishPlusDragon/unitree-go2-slam-toolbox.git
    ```  
 
-3. **编译工作空间**  
+3. **Compiler workspace**  
    ```bash
    cd .. && colcon build
    ```  
 
-4. **启动功能**  
-   - 加载环境变量  
+4. **Startup function**  
+   -Load environment variables  
      ```bash
      source install/setup.bash
      ```  
-   - 启动 SLAM 建图（包含可视化）  
+   - Start SLAM mapping (including visualization)  
      ```bash
      ros2 launch go2_core go2_start.launch.py
      ```  
-   - 新终端启动键盘控制（控制机器狗移动建图）  
+   - Start the new terminal with keyboard control (to control the robot dog's movement and mapping).  
      ```bash
      ros2 run teleop_twist_keyboard teleop_twist_keyboard
      ```  
 
 
-> ⚠️ 注意：建图时建议将移动速度调至 0.3m/s 左右，步态选择“经典模式”以保证稳定性。
+>⚠️ Note: When creating a map, it is recommended to adjust the movement speed to around 0.3m/s and select "Classic Mode" for gait to ensure stability.
 
 
-## 注意：
-- 由于作者的学业压力，本项目不再维护，但如果有bug的以及有大佬调好了导航，请在issue中交流，让我学习学习
+## Notice:
+Due to the author's academic pressure, this project is no longer maintained. However, if there are any bugs or if any experts have fixed the navigation, please share them in the issues so I can learn from them.
 
-## 鸣谢：
-- 感谢所有对我学习路上有帮助的人
+## Acknowledgements:
+- Thank you to everyone who has helped me on my learning journey.
