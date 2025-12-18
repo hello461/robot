@@ -1,0 +1,27 @@
+[0.036s] Invoking command in '/home/q/unitree_ws/unitree-go2-slam-toolbox/build/high_level_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/q/ws_moveit2/install/moveit_configs_utils:/home/q/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/q/unitree_ws/unitree-go2-slam-toolbox/build/high_level_control -- -j20 -l20
+[0.081s] [35m[1mConsolidate compiler generated dependencies of target high_level_ctrl[0m
+[0.093s] [ 33%] [32mBuilding CXX object CMakeFiles/high_level_ctrl.dir/src/high_level_ctrl.cpp.o[0m
+[0.095s] [ 66%] [32mBuilding CXX object CMakeFiles/high_level_ctrl.dir/src/common/ros2_sport_client.cpp.o[0m
+[6.204s] [100%] [32m[1mLinking CXX executable high_level_ctrl[0m
+[6.553s] [100%] Built target high_level_ctrl
+[6.563s] Invoked command in '/home/q/unitree_ws/unitree-go2-slam-toolbox/build/high_level_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/q/ws_moveit2/install/moveit_configs_utils:/home/q/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/q/unitree_ws/unitree-go2-slam-toolbox/build/high_level_control -- -j20 -l20
+[6.564s] Invoking command in '/home/q/unitree_ws/unitree-go2-slam-toolbox/build/high_level_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/q/ws_moveit2/install/moveit_configs_utils:/home/q/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --install /home/q/unitree_ws/unitree-go2-slam-toolbox/build/high_level_control
+[6.570s] -- Install configuration: ""
+[6.571s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/bin/high_level_ctrl
+[6.573s] -- Set runtime path of "/home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/bin/high_level_ctrl" to ""
+[6.573s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/ament_index/resource_index/package_run_dependencies/high_level_control
+[6.573s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/ament_index/resource_index/parent_prefix_path/high_level_control
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/environment/ament_prefix_path.sh
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/environment/ament_prefix_path.dsv
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/environment/path.sh
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/environment/path.dsv
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/local_setup.bash
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/local_setup.sh
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/local_setup.zsh
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/local_setup.dsv
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/package.dsv
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/ament_index/resource_index/packages/high_level_control
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/cmake/high_level_controlConfig.cmake
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/cmake/high_level_controlConfig-version.cmake
+[6.574s] -- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/high_level_control/share/high_level_control/package.xml
+[6.575s] Invoked command in '/home/q/unitree_ws/unitree-go2-slam-toolbox/build/high_level_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/q/ws_moveit2/install/moveit_configs_utils:/home/q/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --install /home/q/unitree_ws/unitree-go2-slam-toolbox/build/high_level_control

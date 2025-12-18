@@ -1,0 +1,6 @@
+{
+  "package_name": "unitree_go2_nav_interfaces",
+  "non_idl_tuples": [
+    "/home/q/unitree_ws/unitree-go2-slam-toolbox/unitree_go2_nav_interfaces:msg/NavToPose.msg"
+  ]
+}

@@ -1,0 +1,58 @@
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found rclcpp: 16.0.16 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found rclcpp_action: 16.0.16 (/opt/ros/humble/share/rclcpp_action/cmake)
+-- Found std_srvs: 4.9.0 (/opt/ros/humble/share/std_srvs/cmake)
+-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found tf2: 0.25.17 (/opt/ros/humble/share/tf2/cmake)
+-- Found tf2_geometry_msgs: 0.25.17 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found nav2_msgs: 1.1.20 (/opt/ros/humble/share/nav2_msgs/cmake)
+-- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found unitree_go2_nav_interfaces: 0.0.0 (/home/q/unitree_ws/unitree-go2-slam-toolbox/install/unitree_go2_nav_interfaces/share/unitree_go2_nav_interfaces/cmake)
+-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/q/unitree_ws/unitree-go2-slam-toolbox/build/go2_navigation2
+[ 50%] [32mBuilding CXX object CMakeFiles/navToPose.dir/src/navToPose.cpp.o[0m
+[100%] [32m[1mLinking CXX executable navToPose[0m
+[100%] Built target navToPose
+-- Install configuration: ""
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/lib/go2_navigation2/navToPose
+-- Set runtime path of "/home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/lib/go2_navigation2/navToPose" to ""
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/launch
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/launch/go2_nav2.launch.py
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/config
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/config/nav2_params.yaml
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/ament_index/resource_index/package_run_dependencies/go2_navigation2
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/ament_index/resource_index/parent_prefix_path/go2_navigation2
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/environment/ament_prefix_path.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/environment/ament_prefix_path.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/environment/path.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/environment/path.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/local_setup.bash
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/local_setup.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/local_setup.zsh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/local_setup.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/package.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/ament_index/resource_index/packages/go2_navigation2
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/cmake/go2_navigation2Config.cmake
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/cmake/go2_navigation2Config-version.cmake
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_navigation2/share/go2_navigation2/package.xml

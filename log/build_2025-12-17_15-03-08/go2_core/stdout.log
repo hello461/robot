@@ -1,0 +1,23 @@
+-- Install configuration: ""
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/launch
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/launch/go2_start.launch.py
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/launch/go2_robot_localization.launch.py
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/rviz2
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/rviz2/display.rviz
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/config
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/config/go2_ekf_params.yaml
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/ament_index/resource_index/package_run_dependencies/go2_core
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/ament_index/resource_index/parent_prefix_path/go2_core
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/environment/ament_prefix_path.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/environment/ament_prefix_path.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/environment/path.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/environment/path.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/local_setup.bash
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/local_setup.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/local_setup.zsh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/local_setup.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/package.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/ament_index/resource_index/packages/go2_core
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/cmake/go2_coreConfig.cmake
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/cmake/go2_coreConfig-version.cmake
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_core/share/go2_core/package.xml

@@ -1,0 +1,20 @@
+[35m[1mConsolidate compiler generated dependencies of target twist_bridge[0m
+[100%] Built target twist_bridge
+-- Install configuration: ""
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/lib/go2_twist_bridge/twist_bridge
+-- Set runtime path of "/home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/lib/go2_twist_bridge/twist_bridge" to ""
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/ament_index/resource_index/package_run_dependencies/go2_twist_bridge
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/ament_index/resource_index/parent_prefix_path/go2_twist_bridge
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/environment/ament_prefix_path.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/environment/ament_prefix_path.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/environment/path.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/environment/path.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/local_setup.bash
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/local_setup.sh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/local_setup.zsh
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/local_setup.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/package.dsv
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/ament_index/resource_index/packages/go2_twist_bridge
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/cmake/go2_twist_bridgeConfig.cmake
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/cmake/go2_twist_bridgeConfig-version.cmake
+-- Installing: /home/q/unitree_ws/unitree-go2-slam-toolbox/install/go2_twist_bridge/share/go2_twist_bridge/package.xml

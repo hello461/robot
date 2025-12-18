@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/ros/humble/include/**",
+                "~/unitree_ws/unitree_ros2/install/unitree_api/include/**",
+                "~/unitree_ws/unitree_ros2/install/unitree_go/include/**",
+                "/usr/include/**",
+                "${workspaceFolder}/install/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

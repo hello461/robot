@@ -1,0 +1,9 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/driver.dir/src/driver.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/lowstate_to_imu.dir/src/lowstate_to_imu.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/footprint_to_link.dir/src/footprint_to_link.cpp.o[0m
+[ 66%] [32m[1mLinking CXX executable lowstate_to_imu[0m
+[ 83%] [32m[1mLinking CXX executable footprint_to_link[0m
+[ 83%] Built target lowstate_to_imu
+[ 83%] Built target footprint_to_link
+[100%] [32m[1mLinking CXX executable driver[0m
+[100%] Built target driver

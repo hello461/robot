@@ -1,0 +1,1 @@
+Invoking command in '/home/q/unitree_ws/unitree-go2-slam-toolbox/build/go2_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/q/ws_moveit2/install/moveit_configs_utils:/home/q/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/q/unitree_ws/unitree-go2-slam-toolbox/build/go2_perception -- -j20 -l20

@@ -1,0 +1,10 @@
+[0.041s] Invoking command in '/home/q/unitree_ws/unitree-go2-slam-toolbox/build/go2_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/q/ws_moveit2/install/moveit_configs_utils:/home/q/ws_moveit2/install/launch_param_builder:/opt/ros/humble /usr/bin/cmake --build /home/q/unitree_ws/unitree-go2-slam-toolbox/build/go2_perception -- -j20 -l20
+[0.098s] [ 16%] [32mBuilding CXX object CMakeFiles/pointcloud_to_laserscan.dir/src/pointcloud_to_laserscan_node.cpp.o[0m
+[0.098s] [ 33%] [32mBuilding CXX object CMakeFiles/pointcloud_to_laserscan_node.dir/rclcpp_components/node_main_pointcloud_to_laserscan_node.cpp.o[0m
+[0.098s] [ 50%] [32mBuilding CXX object CMakeFiles/cloud_accumulation.dir/src/cloud_accumulation.cpp.o[0m
+[3.263s] [ 66%] [32m[1mLinking CXX executable pointcloud_to_laserscan_node[0m
+[3.422s] [ 66%] Built target pointcloud_to_laserscan_node
+[7.479s] [ 83%] [32m[1mLinking CXX executable cloud_accumulation[0m
+[7.588s] [100%] [32m[1mLinking CXX shared library libpointcloud_to_laserscan.so[0m
+[7.760s] [100%] Built target cloud_accumulation
+[7.925s] [100%] Built target pointcloud_to_laserscan
