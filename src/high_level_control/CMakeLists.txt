@@ -33,9 +33,8 @@ add_executable(high_level_ctrl src/high_level_ctrl.cpp src/common/ros2_sport_cli
 
 ament_target_dependencies(high_level_ctrl ${DEPENDENCY_LIST} geometry_msgs unitree_go2_nav_interfaces)
 
-install(TARGETS
-        high_level_ctrl
-        DESTINATION)
+install(TARGETS high_level_ctrl
+        DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

@@ -13,11 +13,25 @@ import launch
 def generate_launch_description():
     get_nav2_pkg = get_package_share_directory("go2_navigation2")
     get_bringup_pkg = get_package_share_directory("nav2_bringup")
-    go2_description_pkg = get_package_share_directory("go2_description")
+    # go2_description_pkg = get_package_share_directory("go2_description")
     go2_core_pkg = get_package_share_directory("go2_core")
     go2_driver_pkg = get_package_share_directory("go2_driver")
+    go2_perception_pkg = get_package_share_directory("go2_perception")
+    go2_slam_pkg = get_package_share_directory("go2_slam")
 
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='false')
+
+    use_slamtoolbox = DeclareLaunchArgument(
+        name="use_slamtoolbox",
+        default_value="true"
+    )
+
+    go2_slamtoolbox_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(go2_slam_pkg, "launch", "go2_slamtoolbox.launch.py")
+        ),
+        condition = IfCondition(LaunchConfiguration('use_slamtoolbox'))
+    )
 
     # map_yaml_path = launch.substitutions.LaunchConfiguration(
     #     'map', default=os.path.join(get_nav2_pkg, 'maps', '01map.yaml'))
@@ -28,7 +42,7 @@ def generate_launch_description():
     nav2_param_path = launch.substitutions.LaunchConfiguration(
         'params_file', default=os.path.join(get_nav2_pkg, 'config', 'nav2_params.yaml'))
     
-    rviz_config_dir = os.path.join(get_bringup_pkg, 'rviz', 'nav2_default_view.rviz')
+    rviz_config_dir = os.path.join(get_nav2_pkg, 'config', 'nav2_config.rviz')
 
     # Startup driver package
     go2_driver_launch = IncludeLaunchDescription(
@@ -95,17 +109,11 @@ def generate_launch_description():
         output='screen'
     )
 
-    # --- drive ---
-    go2_driver = Node(
-        package="go2_driver",
-        executable="driver"
-    )
-
-    # Includes scan topic
-    cloud_launch = IncludeLaunchDescription(
+    # Point cloud processing
+    go2_pointcloud_launch = IncludeLaunchDescription(
         launch_description_source=PythonLaunchDescriptionSource(
             launch_file_path=os.path.join(
-                get_package_share_directory("go2_perception"),
+                go2_perception_pkg,
                 "launch",
                 "go2_pointcloud.launch.py",
             )
@@ -113,28 +121,27 @@ def generate_launch_description():
     )
 
     # Includes model visualization
-    go2_display_launch = IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                os.path.join(go2_description_pkg, "launch", "display.launch.py")
-            ),
-            launch_arguments=[("use_joint_state_publisher", "false")] 
-            # condition=IfCondition(LaunchConfiguration('use_display'))
-        )
+    # go2_display_launch = IncludeLaunchDescription(
+    #         PythonLaunchDescriptionSource(
+    #             os.path.join(go2_description_pkg, "launch", "display.launch.py")
+    #         ),
+    #         launch_arguments=[("use_joint_state_publisher", "false")] 
+    #         # condition=IfCondition(LaunchConfiguration('use_display'))
+    #     )
     
     # run node nav2 to pose
-    nav_to_pose = Node(
-        package="go2_navigation2",
-        executable="navToPose"
-    )
+    # nav_to_pose = Node(
+    #     package="go2_navigation2",
+    #     executable="navToPose"
+    # )
 
     # run high level control
-    high_level_control = Node(
-        package="high_level_control",
-        executable="high_level_ctrl"
-    )
+    # high_level_control = Node(
+    #     package="high_level_control",
+    #     executable="high_level_ctrl"
+    # )
 
     return LaunchDescription([
-        go2_driver,
         map_server,
         amcl,
         lifecycle_manager,
@@ -143,8 +150,11 @@ def generate_launch_description():
         # imu_tf,
         go2_robot_localization,
         rviz2,
-        cloud_launch,
-        go2_display_launch,
-        nav_to_pose,
-        high_level_control
+        go2_pointcloud_launch,
+        # go2_display_launch,
+        go2_driver_launch,
+        # nav_to_pose,
+        # high_level_control,
+        use_slamtoolbox,
+        go2_slamtoolbox_launch
     ])

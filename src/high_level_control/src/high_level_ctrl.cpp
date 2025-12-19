@@ -64,7 +64,7 @@ private:
             {
                 // Stop the robot
                 sport_req.StopMove(req);
-                RCLCPP_INFO(get_logger(), "[HIGH LEVEL CONTROLLER] /////////////////////////////////////////////////////////////////////////////////.");
+                // RCLCPP_INFO(get_logger(), "[HIGH LEVEL CONTROLLER] /////////////////////////////////////////////////////////////////////////////////.");
                 RCLCPP_INFO(get_logger(), "[HIGH LEVEL CONTROLLER] Goal Reached, Robot stopped.");
             }
 
