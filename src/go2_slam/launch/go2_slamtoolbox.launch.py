@@ -23,7 +23,7 @@ def generate_launch_description():
             launch_file_path=os.path.join(
                 get_slam_toolbox_pkg,
                 "launch",
-                "online_async_launch.py"
+                "localization_launch.py"
             )
         ),launch_arguments=[("slam_params_file", slam_toolbox_config), ("use_sim_time", "false")]
     )

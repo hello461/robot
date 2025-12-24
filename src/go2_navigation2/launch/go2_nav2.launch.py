@@ -13,7 +13,6 @@ import launch
 def generate_launch_description():
     get_nav2_pkg = get_package_share_directory("go2_navigation2")
     get_bringup_pkg = get_package_share_directory("nav2_bringup")
-    # go2_description_pkg = get_package_share_directory("go2_description")
     go2_core_pkg = get_package_share_directory("go2_core")
     go2_driver_pkg = get_package_share_directory("go2_driver")
     go2_perception_pkg = get_package_share_directory("go2_perception")
@@ -23,7 +22,7 @@ def generate_launch_description():
 
     use_slamtoolbox = DeclareLaunchArgument(
         name="use_slamtoolbox",
-        default_value="true"
+        default_value="false"
     )
 
     go2_slamtoolbox_launch = IncludeLaunchDescription(
@@ -37,7 +36,7 @@ def generate_launch_description():
     #     'map', default=os.path.join(get_nav2_pkg, 'maps', '01map.yaml'))
 
     map_yaml_path = launch.substitutions.LaunchConfiguration(
-        'map', default=os.path.join('4floor_first_map.yaml'))
+        'map', default=os.path.join('map1.yaml'))
     
     nav2_param_path = launch.substitutions.LaunchConfiguration(
         'params_file', default=os.path.join(get_nav2_pkg, 'config', 'nav2_params.yaml'))
@@ -120,27 +119,6 @@ def generate_launch_description():
         )
     )
 
-    # Includes model visualization
-    # go2_display_launch = IncludeLaunchDescription(
-    #         PythonLaunchDescriptionSource(
-    #             os.path.join(go2_description_pkg, "launch", "display.launch.py")
-    #         ),
-    #         launch_arguments=[("use_joint_state_publisher", "false")] 
-    #         # condition=IfCondition(LaunchConfiguration('use_display'))
-    #     )
-    
-    # run node nav2 to pose
-    # nav_to_pose = Node(
-    #     package="go2_navigation2",
-    #     executable="navToPose"
-    # )
-
-    # run high level control
-    # high_level_control = Node(
-    #     package="high_level_control",
-    #     executable="high_level_ctrl"
-    # )
-
     return LaunchDescription([
         map_server,
         amcl,
@@ -151,10 +129,7 @@ def generate_launch_description():
         go2_robot_localization,
         rviz2,
         go2_pointcloud_launch,
-        # go2_display_launch,
         go2_driver_launch,
-        # nav_to_pose,
-        # high_level_control,
-        use_slamtoolbox,
-        go2_slamtoolbox_launch
+        # use_slamtoolbox,
+        # go2_slamtoolbox_launch
     ])
