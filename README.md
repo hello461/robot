@@ -11,37 +11,37 @@ Bilibili address:https://www.bilibili.com/video/BV1caWQzdE3G/?spm_id_from=333.33
 2.PC host with ROS2 Humble installed  
 3.5-10 meter network cable (for connecting the robot dog to the PC)  
 
-##✅ Feature implemented  
+## ✅ Feature implemented  
 -Visualization of the robot dog model in Rviz2  
 -Point cloud accumulation and`PointCloud2_to_LaserScan`Message Transformation  
 -Supports official ROS2 keyboard control node  
 -Based on IMU fused odometry (odom) data  
 -Integrating slam-toolbox to implement mapping functionality  
 
-##🚧 Features to be completed  
+## 🚧 Features to be completed  
 -Autonomous navigation function (core features yet to be developed)  
 
-##🔧 Development Environment Configuration  
+## 🔧 Development Environment Configuration  
 
 We recommend referring to the following tutorial to complete the network environment setup (**Setting up the network environment is very important and must be completed.**）：  
 -Courses taught by Professor Zhao Xuzuo:[ROS2: From Beginner to Expert](https://www.bilibili.com/video/BV1vv5YzBEQH?spm_id_from=333.788.videopod.episodes&vd_source=4bd0448ccc277efab1a6915315abd6b9&p=5)(More suitable for beginners)  
 -Utree official documentation:[Go2 Developer Quick Start](https://support.unitree.com/home/zh/developer/Quick_start)  
 
-##📦 Dependency Installation  
-1.Install robot positioning fusion package  
+## 📦 Dependency Installation  
+1. Install robot positioning fusion package  
    ```bash
    sudo apt update && sudo apt install ros-humble-robot-localization
    ```  
 
-2.Install mapping tools  
+2. Install mapping tools  
    ```bash
    sudo apt update&& sudo apt install ros-humble-slam-toolbox
    ```  
 
-3.Other dependencies: If the compiler prompts that packages are missing, you can use the missing packages according to the error message.`sudo apt install ros-humble-<missing package name>`Install
+3. Other dependencies: If the compiler prompts that packages are missing, you can use the missing packages according to the error message.`sudo apt install ros-humble-<missing package name>`Install
 
 
-##🚀 Quick Start Steps  
+## 🚀 Quick Start Steps  
 
 1. **Create and enter a workspace**  
    ```bash
