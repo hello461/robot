@@ -20,21 +20,6 @@ def generate_launch_description():
 
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='false')
 
-    use_slamtoolbox = DeclareLaunchArgument(
-        name="use_slamtoolbox",
-        default_value="false"
-    )
-
-    go2_slamtoolbox_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(go2_slam_pkg, "launch", "go2_slamtoolbox.launch.py")
-        ),
-        condition = IfCondition(LaunchConfiguration('use_slamtoolbox'))
-    )
-
-    # map_yaml_path = launch.substitutions.LaunchConfiguration(
-    #     'map', default=os.path.join(get_nav2_pkg, 'maps', '01map.yaml'))
-
     map_yaml_path = launch.substitutions.LaunchConfiguration(
         'map', default=os.path.join('map1.yaml'))
     
@@ -124,12 +109,8 @@ def generate_launch_description():
         amcl,
         lifecycle_manager,
         nav2_launch,
-        # use_imu_tf_arg,
-        # imu_tf,
         go2_robot_localization,
         rviz2,
         go2_pointcloud_launch,
         go2_driver_launch,
-        # use_slamtoolbox,
-        # go2_slamtoolbox_launch
     ])
