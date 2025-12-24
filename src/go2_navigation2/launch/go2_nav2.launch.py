@@ -16,30 +16,27 @@ def generate_launch_description():
     go2_core_pkg = get_package_share_directory("go2_core")
     go2_driver_pkg = get_package_share_directory("go2_driver")
     go2_perception_pkg = get_package_share_directory("go2_perception")
-    go2_slam_pkg = get_package_share_directory("go2_slam")
+    # go2_slam_pkg = get_package_share_directory("go2_slam")
 
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='false')
 
-    use_slamtoolbox = DeclareLaunchArgument(
-        name="use_slamtoolbox",
-        default_value="false"
-    )
+    # use_slamtoolbox = DeclareLaunchArgument(
+    #     name="use_slamtoolbox",
+    #     default_value="false"
+    # )
 
-    go2_slamtoolbox_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(go2_slam_pkg, "launch", "go2_slamtoolbox.launch.py")
-        ),
-        condition = IfCondition(LaunchConfiguration('use_slamtoolbox'))
-    )
-
-    # map_yaml_path = launch.substitutions.LaunchConfiguration(
-    #     'map', default=os.path.join(get_nav2_pkg, 'maps', '01map.yaml'))
+    # go2_slamtoolbox_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         os.path.join(go2_slam_pkg, "launch", "go2_slamtoolbox.launch.py")
+    #     ),
+    #     condition = IfCondition(LaunchConfiguration('use_slamtoolbox'))
+    # )
 
     map_yaml_path = launch.substitutions.LaunchConfiguration(
         'map', default=os.path.join('map1.yaml'))
     
     nav2_param_path = launch.substitutions.LaunchConfiguration(
-        'params_file', default=os.path.join(get_nav2_pkg, 'config', 'nav2_params.yaml'))
+        'params_file', default=os.path.join(get_nav2_pkg, 'config', 'nav2_params_new.yaml'))
     
     rviz_config_dir = os.path.join(get_nav2_pkg, 'config', 'nav2_config.rviz')
 
@@ -56,7 +53,7 @@ def generate_launch_description():
         launch_arguments=[("params_file", nav2_param_path), ("use_sim_time", use_sim_time), ("map", map_yaml_path)]
     )
 
-    # --- map_server ---
+    # ========map_server=========
     map_server = Node(
         package='nav2_map_server',
         executable='map_server',
@@ -69,7 +66,7 @@ def generate_launch_description():
         }]
     )
 
-    # --- AMCL ---
+    # =======AMCL========
     amcl = Node(
         package='nav2_amcl',
         executable='amcl',
@@ -78,7 +75,7 @@ def generate_launch_description():
         parameters=[nav2_param_path, {'use_sim_time': use_sim_time}]
     )
 
-    # --- lifecycle_manager ---
+    # ========lifecycle_manager==========
     lifecycle_manager = Node(
         package='nav2_lifecycle_manager',
         executable='lifecycle_manager',
@@ -124,8 +121,6 @@ def generate_launch_description():
         amcl,
         lifecycle_manager,
         nav2_launch,
-        # use_imu_tf_arg,
-        # imu_tf,
         go2_robot_localization,
         rviz2,
         go2_pointcloud_launch,
