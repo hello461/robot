@@ -14,23 +14,9 @@ def generate_launch_description():
     get_nav2_pkg = get_package_share_directory("go2_navigation2")
     get_bringup_pkg = get_package_share_directory("nav2_bringup")
     go2_core_pkg = get_package_share_directory("go2_core")
-    go2_driver_pkg = get_package_share_directory("go2_driver")
     go2_perception_pkg = get_package_share_directory("go2_perception")
-    # go2_slam_pkg = get_package_share_directory("go2_slam")
 
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='false')
-
-    # use_slamtoolbox = DeclareLaunchArgument(
-    #     name="use_slamtoolbox",
-    #     default_value="false"
-    # )
-
-    # go2_slamtoolbox_launch = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(
-    #         os.path.join(go2_slam_pkg, "launch", "go2_slamtoolbox.launch.py")
-    #     ),
-    #     condition = IfCondition(LaunchConfiguration('use_slamtoolbox'))
-    # )
 
     map_yaml_path = launch.substitutions.LaunchConfiguration(
         'map', default=os.path.join('map1.yaml'))
@@ -41,11 +27,11 @@ def generate_launch_description():
     rviz_config_dir = os.path.join(get_nav2_pkg, 'config', 'nav2_config.rviz')
 
     # Startup driver package
-    go2_driver_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(go2_driver_pkg, "launch", "driver.launch.py")
-        )
-    )
+    # go2_driver_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         os.path.join(go2_driver_pkg, "launch", "driver.launch.py")
+    #     )
+    # )
 
     # Launch file containing nav2
     nav2_launch = IncludeLaunchDescription(
@@ -116,7 +102,31 @@ def generate_launch_description():
         )
     )
 
+    # Lowstate to IMU node
+    lowStateToIMU = Node(
+        package="go2_driver",
+        executable="lowstate_to_imu",
+        name="lowSate_to_IMU"
+    )
+
+    # Run driver node
+    footprintToLink = Node(
+        package="go2_driver",
+        executable="footprint_to_link",
+        name="footprint_to_link"
+    )
+
+    # Footprint to link node
+    driver = Node(
+        package="go2_driver",
+        executable="driver",
+        name="driver"
+    )
+
     return LaunchDescription([
+        driver,
+        footprintToLink,
+        lowStateToIMU,
         map_server,
         amcl,
         lifecycle_manager,
@@ -124,5 +134,5 @@ def generate_launch_description():
         go2_robot_localization,
         rviz2,
         go2_pointcloud_launch,
-        go2_driver_launch,
+        # go2_driver_launch,
     ])
