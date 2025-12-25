@@ -127,6 +127,11 @@ def generate_launch_description():
         driver,
         footprintToLink,
         lowStateToIMU,
+        
+        Node(
+            package="go2_twist_bridge",
+            executable="twist_bridge",
+        ),
         map_server,
         amcl,
         lifecycle_manager,
@@ -134,5 +139,4 @@ def generate_launch_description():
         go2_robot_localization,
         rviz2,
         go2_pointcloud_launch,
-        # go2_driver_launch,
     ])
