@@ -7,34 +7,6 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(rclcpp_action REQUIRED)
-find_package(std_srvs REQUIRED)
-find_package(geometry_msgs REQUIRED)
-find_package(tf2 REQUIRED)
-find_package(tf2_geometry_msgs REQUIRED)
-find_package(nav2_msgs REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(nav_msgs REQUIRED)
-find_package(unitree_go2_nav_interfaces REQUIRED)
-
-add_executable(navToPose src/navToPose.cpp)
-
-ament_target_dependencies(
-  navToPose
-  rclcpp
-  rclcpp_action
-  std_srvs geometry_msgs
-  tf2 tf2_geometry_msgs
-  nav2_msgs sensor_msgs
-  nav_msgs
-  unitree_go2_nav_interfaces
-)
-
-install(TARGETS
-  navToPose
-  DESTINATION lib/${PROJECT_NAME}
-)
 
 install(DIRECTORY
   launch config

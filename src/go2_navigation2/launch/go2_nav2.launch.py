@@ -36,7 +36,7 @@ def generate_launch_description():
         'map', default=os.path.join('map1.yaml'))
     
     nav2_param_path = launch.substitutions.LaunchConfiguration(
-        'params_file', default=os.path.join(get_nav2_pkg, 'config', 'nav2_params_new.yaml'))
+        'params_file', default=os.path.join(get_nav2_pkg, 'config', 'nav2_params_dwb.yaml'))
     
     rviz_config_dir = os.path.join(get_nav2_pkg, 'config', 'nav2_config.rviz')
 
@@ -125,6 +125,4 @@ def generate_launch_description():
         rviz2,
         go2_pointcloud_launch,
         go2_driver_launch,
-        # use_slamtoolbox,
-        # go2_slamtoolbox_launch
     ])

@@ -37,8 +37,8 @@ public:
       robot_pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>("/utlidar/robot_pose", 10, std::bind(&Driver::pose_callback, this, std::placeholders::_1));
 
       // Joint status release
-      joint_state_pub_ = this->create_publisher<sensor_msgs::msg::JointState>("joint_states", 10);
-      low_state_sub_ = this->create_subscription<unitree_go::msg::LowState>("/lf/lowstate", 10, std::bind(&Driver::low_state_cb, this, std::placeholders::_1));
+      // joint_state_pub_ = this->create_publisher<sensor_msgs::msg::JointState>("joint_states", 10);
+      // low_state_sub_ = this->create_subscription<unitree_go::msg::LowState>("/lf/lowstate", 10, std::bind(&Driver::low_state_cb, this, std::placeholders::_1));
     }
 
 private:

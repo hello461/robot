@@ -31,7 +31,7 @@ public:
 
         // Create a timer to publish data periodically.
         timer_ = this->create_wall_timer(
-            25ms,
+            25ms, // 40Hz
             std::bind(&CloudAccumulator::timer_callback, this)
         );
     }
@@ -44,7 +44,7 @@ private:
     std::vector<sensor_msgs::msg::PointCloud2::ConstSharedPtr> clouds_; // Create a container to store the point cloud (note that the point cloud data is read-only and cannot be modified).
     sensor_msgs::msg::PointCloud2 accumulated_cloud_;                   // Create cumulative point cloud data
 
-    const size_t max_clouds_ = 25;  // Stores up to 25 frames of point cloud data
+    const size_t max_clouds_ = 5;  // Stores up to 25 frames of point cloud data
     const float min_height_ = 0.2f; // Minimum height threshold
     const float max_height_ = 0.8f; // Maximum height threshold
 
