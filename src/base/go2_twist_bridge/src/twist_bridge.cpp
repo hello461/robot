@@ -30,7 +30,14 @@ private:
         double y = twist->linear.y;
         double z = twist->angular.z;
         // The default api_id is for balanced standing.
-        auto api_id = ROBOT_SPORT_API_ID_BALANCESTAND;
+        // auto api_id = ROBOT_SPORT_API_ID_BALANCESTAND;
+        auto api_id = ROBOT_SPORT_API_ID_STANDUP;
+        
+        // Add switch walk mode
+        if(defineWalkMode){
+            api_id = ROBOT_SPORT_API_ID_STANDUP;
+            defineWalkMode = false;
+        }
 
         if(x != 0 || y != 0 || z != 0)
         {
@@ -45,6 +52,7 @@ private:
         request.header.identity.api_id = api_id;
         request_pub_->publish(request);
     }
+    bool defineWalkMode = true;
     rclcpp::Publisher<unitree_api::msg::Request>::SharedPtr request_pub_;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_sub_;
 };

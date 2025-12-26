@@ -99,4 +99,6 @@ const int32_t ROBOT_SPORT_API_ID_FRONTJUMP = 1031;
 
 // 1032: Pounce forward, control the robot to perform a pounce forward action.
 const int32_t ROBOT_SPORT_API_ID_FRONTPOUNCE = 1032;
+
+const int32_t ROBOT_SPORT_API_ID_CLASSICWALK = 2049;
 #endif

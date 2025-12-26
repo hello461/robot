@@ -4,6 +4,7 @@
 #include "tf2_ros/transform_broadcaster.h"
 #include "tf2/LinearMath/Quaternion.h"
 #include "geometry_msgs/msg/transform_stamped.hpp"
+#include "example_interfaces/msg/float32.hpp"
 
 class LowStateToImuNode : public rclcpp::Node
 {
@@ -21,6 +22,8 @@ public:
         // 3. Create a TF publisher
         tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
 
+        // 4. Create battery voltage info
+        battery_pub_ = this->create_publisher<example_interfaces::msg::Float32>("/go2_status", 1);
         RCLCPP_INFO(this->get_logger(), "IMU The conversion node has been started.");
     }
 
@@ -31,6 +34,8 @@ private:
     rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_pub_;
     // TF Broadcaster
     std::shared_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
+    // Publisher to publish robot's battery
+    rclcpp::Publisher<example_interfaces::msg::Float32>::SharedPtr battery_pub_;
 
     // Extracting IMU information from low-level state information
     void lowstate_callback(const unitree_go::msg::LowState::SharedPtr lowstate_msg)
@@ -69,13 +74,16 @@ private:
         imu_msg->linear_acceleration_covariance[4] = 0.02;  // yy
         imu_msg->linear_acceleration_covariance[8] = 0.02;  // zz
 
-        
-
         // Directional covariance (-1 indicates unknown)
         imu_msg->orientation_covariance[0] = -1.0;
 
         // IMU News Release
         imu_pub_->publish(std::move(imu_msg));
+
+        // Battery infomation
+        example_interfaces::msg::Float32 batteryVoltage;
+        batteryVoltage.data = lowstate_msg->power_v;
+        battery_pub_->publish(batteryVoltage);
 
         // Release TF Transformer
         publish_tf_transform();

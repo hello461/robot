@@ -14,6 +14,7 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(example_interfaces REQUIRED)
 
 add_executable(driver src/driver.cpp)
 add_executable(footprint_to_link src/footprint_to_link.cpp)
@@ -54,6 +55,7 @@ ament_target_dependencies(
   "tf2_ros"
   "geometry_msgs"
   "sensor_msgs"
+  "example_interfaces"
 )
 
 install(TARGETS 
