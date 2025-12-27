@@ -8,7 +8,8 @@
                 "~/unitree_ws/unitree_ros2/install/unitree_api/include/**",
                 "~/unitree_ws/unitree_ros2/install/unitree_go/include/**",
                 "/usr/include/**",
-                "${workspaceFolder}/install/**"
+                "${workspaceFolder}/install/**",
+                "${workspaceFolder}/src/base/go2_control/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

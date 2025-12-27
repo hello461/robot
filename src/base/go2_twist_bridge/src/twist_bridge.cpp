@@ -30,8 +30,8 @@ private:
         double y = twist->linear.y;
         double z = twist->angular.z;
         // The default api_id is for balanced standing.
-        // auto api_id = ROBOT_SPORT_API_ID_BALANCESTAND;
-        auto api_id = ROBOT_SPORT_API_ID_STANDUP;
+        auto api_id = ROBOT_SPORT_API_ID_BALANCESTAND;
+        // auto api_id = ROBOT_SPORT_API_ID_STANDUP;
         
         // Add switch walk mode
         if(defineWalkMode){
