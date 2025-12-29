@@ -12,9 +12,11 @@ find_package(geometry_msgs REQUIRED)
 find_package(unitree_api REQUIRED)
 
 add_executable(twist_bridge src/twist_bridge.cpp)
+
 target_include_directories(twist_bridge PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
+
 target_compile_features(twist_bridge PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 ament_target_dependencies(
   twist_bridge
