@@ -11,6 +11,27 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+find_package(OpenCV REQUIRED)
+find_package(unitree_go REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(cv_bridge)
+find_package(std_msgs REQUIRED)
+
+add_executable(go2_media src/go2_media.cpp)
+
+ament_target_dependencies(go2_media
+  unitree_go
+  rclcpp
+  OpenCV
+  sensor_msgs
+  cv_bridge
+  std_msgs
+)
+
+install(TARGETS go2_media
+  DESTINATION lib/${PROJECT_NAME})
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
