@@ -15,6 +15,8 @@ def generate_launch_description():
     get_bringup_pkg = get_package_share_directory("nav2_bringup")
     go2_core_pkg = get_package_share_directory("go2_core")
     go2_perception_pkg = get_package_share_directory("go2_perception")
+    # get package shared: client_service
+    client_service_pkg = get_package_share_directory("client_service")
 
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='false')
 
@@ -26,17 +28,15 @@ def generate_launch_description():
     
     rviz_config_dir = os.path.join(get_nav2_pkg, 'config', 'nav2_config.rviz')
 
-    # Startup driver package
-    # go2_driver_launch = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(
-    #         os.path.join(go2_driver_pkg, "launch", "driver.launch.py")
-    #     )
-    # )
-
     # Launch file containing nav2
     nav2_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(get_bringup_pkg, "launch", "navigation_launch.py")),
         launch_arguments=[("params_file", nav2_param_path), ("use_sim_time", use_sim_time), ("map", map_yaml_path)]
+    )
+
+    # Launch client service
+    client_service_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(client_service_pkg, "launch", "pub2server.launch.py"))
     )
 
     # ========map_server=========
@@ -123,15 +123,33 @@ def generate_launch_description():
         name="driver"
     )
 
+    # Real robot control
+    robot_control = Node(
+        package="go2_control",
+        executable="go2_control"
+    )
+
+    # Front camera
+    front_camera = Node(
+        package="go2_media",
+        executable="go2_media"
+    )
+
+    # Initialize pos
+    init_pos = Node(
+        package="go2_control",
+        executable="init_position"
+    )
+
+    # client
+
     return LaunchDescription([
         driver,
         footprintToLink,
         lowStateToIMU,
-        
-        Node(
-            package="go2_twist_bridge",
-            executable="twist_bridge",
-        ),
+        robot_control,
+        front_camera,
+        # init_pos,
         map_server,
         amcl,
         lifecycle_manager,
@@ -139,4 +157,5 @@ def generate_launch_description():
         go2_robot_localization,
         rviz2,
         go2_pointcloud_launch,
+        client_service_launch
     ])
