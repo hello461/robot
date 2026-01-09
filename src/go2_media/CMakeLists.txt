@@ -17,20 +17,45 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(cv_bridge)
 find_package(std_msgs REQUIRED)
+find_package(rclcpp_components REQUIRED)
+find_package(camera_info_manager REQUIRED)
 
-add_executable(go2_media src/go2_media.cpp)
+# add_executable(publish_front_image src/front_image_publisher.cpp)
+add_library(unitree_camera_component SHARED src/front_image_publisher.cpp)
 
-ament_target_dependencies(go2_media
+rclcpp_components_register_node(
+  unitree_camera_component
+  PLUGIN "camera_composable::UnitreeFrontCamera"
+  EXECUTABLE UnitreeFrontCamera
+)
+
+ament_target_dependencies(
+  unitree_camera_component
   unitree_go
   rclcpp
   OpenCV
   sensor_msgs
   cv_bridge
   std_msgs
+  rclcpp_components
+  camera_info_manager
+  rcl_interfaces
 )
 
-install(TARGETS go2_media
-  DESTINATION lib/${PROJECT_NAME})
+install(DIRECTORY config
+  DESTINATION share/${PROJECT_NAME})
+
+ament_export_targets(
+  export_unitree_camera_component
+)
+
+install(
+  TARGETS unitree_camera_component
+  EXPORT export_unitree_camera_component
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

@@ -130,10 +130,10 @@ def generate_launch_description():
     )
 
     # Front camera
-    front_camera = Node(
-        package="go2_media",
-        executable="go2_media"
-    )
+#    front_camera = Node(
+#        package="go2_media",
+#        executable="go2_media"
+#    )
 
     # Initialize pos
     init_pos = Node(
@@ -148,7 +148,7 @@ def generate_launch_description():
         footprintToLink,
         lowStateToIMU,
         robot_control,
-        front_camera,
+#        front_camera,
         # init_pos,
         map_server,
         amcl,
