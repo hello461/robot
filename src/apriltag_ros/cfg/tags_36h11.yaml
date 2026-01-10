@@ -20,6 +20,6 @@
 
         # optional list of tags
         tag:
-            ids: [0, 1]            # tag ID
-            frames: [base1, base2]  # optional frame name
-            sizes: [0.1, 0.1]   # optional tag-specific edge size
+            ids: [1]                # tag ID
+            frames: [tag36h11.1]    # optional frame name
+            sizes: [0.12]           # optional tag-specific edge size

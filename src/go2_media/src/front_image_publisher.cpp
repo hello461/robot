@@ -16,10 +16,9 @@
 
 using namespace std::chrono_literals;
 
-namespace camera_composable{
 class UnitreeFrontCamera : public rclcpp::Node{
 public:
-    UnitreeFrontCamera(const rclcpp::NodeOptions &options) : Node("front_camera", options), cim_(this){
+    UnitreeFrontCamera() : Node("front_camera"), cim_(this){
         // create publisher for publish image
         pub_ = this->create_publisher<sensor_msgs::msg::Image>("camera/image_raw", 10);
         // create publisher for publish camera info
@@ -92,7 +91,11 @@ private:
         pub_ci_->publish(ci_);
     }
 };
-}
 
-#include "rclcpp_components/register_node_macro.hpp"
-RCLCPP_COMPONENTS_REGISTER_NODE(camera_composable::UnitreeFrontCamera);
+int main(int argc, char **argv)
+{
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<UnitreeFrontCamera>());
+    rclcpp::shutdown();
+    return 0;
+}

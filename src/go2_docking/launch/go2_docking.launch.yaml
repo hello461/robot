@@ -1,7 +1,9 @@
 launch:
-- arg:
-    name: device
-    default: "0"
+
+- node:
+    pkg: "go2_media"
+    exec: "front_image_publisher"
+    name: "front_camera"
 
 - node_container:
     pkg: rclcpp_components
@@ -11,7 +13,7 @@ launch:
     composable_node:
       - pkg: image_proc
         plugin: image_proc::RectifyNode
-        name: rectify_
+        name: rectify_image
         namespace: camera
         remap:
         - from: image
@@ -29,10 +31,20 @@ launch:
         remap:
         - from: /apriltag/image_rect
           to: /camera/image_rect
-        # - from: /camera/camera_info
-        #   to: /camera/camera_info
         param:
         - from: $(find-pkg-share apriltag_ros)/cfg/tags_36h11.yaml
         extra_arg:
         - name: use_intra_process_comms
           value: "True"
+
+      - pkg: go2_docking
+        plugin: dockingPoseCompose::DetectedDockPose
+        name: detected_docking_pose
+        namespace: dockingPoseCompose
+
+# - node:
+#     pkg: "go2_docking"
+#     exec: "go2_docking"
+#     name: "detected_docking_pose"
+
+      

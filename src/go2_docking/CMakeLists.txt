@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(go2_media)
+project(go2_docking)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -11,35 +11,42 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-find_package(OpenCV REQUIRED)
-find_package(unitree_go REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(cv_bridge)
-find_package(std_msgs REQUIRED)
-find_package(camera_info_manager REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(rclcpp_components REQUIRED)
 
-add_executable(front_image_publisher src/front_image_publisher.cpp)
+#add_executable(go2_docking src/detected_dock_pose_pub.cpp)
+
+add_library(go2_docking_compose SHARED src/detected_dock_pose_pub.cpp)
 
 ament_target_dependencies(
-  front_image_publisher
-  unitree_go
+  go2_docking_compose
+  geometry_msgs
+  tf2_ros
   rclcpp
-  OpenCV
-  sensor_msgs
-  cv_bridge
-  std_msgs
-  camera_info_manager
-  rcl_interfaces
+  rclcpp_components
 )
 
-install(DIRECTORY config
-  DESTINATION share/${PROJECT_NAME})
-
+rclcpp_components_register_node(
+  go2_docking_compose
+  PLUGIN "dockingPoseCompose::DetectedDockPose"
+  EXECUTABLE detected_dock_pose_pub
+)
+ament_export_targets(export_go2_docking_compose)
 install(
-  TARGETS front_image_publisher
-  DESTINATION lib/${PROJECT_NAME}
+  TARGETS go2_docking_compose
+  EXPORT  export_go2_docking_compose
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
 )
+
+#install(TARGETS go2_docking
+#  DESTINATION lib/${PROJECT_NAME})
+
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

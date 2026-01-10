@@ -129,19 +129,11 @@ def generate_launch_description():
         executable="go2_control"
     )
 
-    # Front camera
-#    front_camera = Node(
-#        package="go2_media",
-#        executable="go2_media"
-#    )
-
     # Initialize pos
     init_pos = Node(
         package="go2_control",
         executable="init_position"
     )
-
-    # client
 
     return LaunchDescription([
         driver,
