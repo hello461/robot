@@ -13,13 +13,13 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     ros_bridge = get_package_share_directory('rosbridge_server')
-    robot_publisher = get_package_share_directory('robot_publisher')
+    client_service = get_package_share_directory('client_service')
 
    
     return LaunchDescription([
        
         Node(
-            package='robot_publisher',
+            package='client_service',
             executable='image_compressor',
             name='image_compressor',
             parameters=[{'bandwidth_mode':'medium','target_fps':10,'motion_detection':False,'grayscale':False}],

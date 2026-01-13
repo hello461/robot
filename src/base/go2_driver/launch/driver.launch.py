@@ -38,8 +38,8 @@ def generate_launch_description():
     
         # Speed ​​Message Bridge
         Node(
-            package="go2_twist_bridge",
-            executable="twist_bridge"
+            package="go2_control",
+            executable="go2_control"
         ),
 
         # Add dynamic coordinate transformation from base_link to base_footprint

@@ -7,6 +7,7 @@
 #include "opencv4/opencv2/opencv.hpp"
 #include "cv_bridge/cv_bridge.h"
 #include "std_msgs/msg/header.hpp"
+
 // Include libraries for publish camera information
 #include "sensor_msgs/msg/camera_info.hpp"
 #include "camera_info_manager/camera_info_manager.hpp"
@@ -14,15 +15,13 @@
 #include "std_msgs/msg/header.hpp"
 #include "thread"
 
-using namespace std::chrono_literals;
-
 class UnitreeFrontCamera : public rclcpp::Node{
 public:
     UnitreeFrontCamera() : Node("front_camera"), cim_(this){
         // create publisher for publish image
-        pub_ = this->create_publisher<sensor_msgs::msg::Image>("camera/image_raw", 10);
+        pub_ = this->create_publisher<sensor_msgs::msg::Image>("camera/image_raw", 1);
         // create publisher for publish camera info
-        pub_ci_ = this->create_publisher<sensor_msgs::msg::CameraInfo>("camera/camera_info", 10);
+        pub_ci_ = this->create_publisher<sensor_msgs::msg::CameraInfo>("camera/camera_info", 1);
 
         // Declare parameters
         this->declare_parameter("camera_name", "front");
@@ -49,7 +48,7 @@ public:
         header_.frame_id = frame_id_;
 
         // create time wall
-        timer_ = this->create_wall_timer(100ms, 
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(100), 
                     std::bind(&UnitreeFrontCamera::timer_callback, this));
         }
 
@@ -75,18 +74,21 @@ private:
     std::thread pub_ci_thread_;
 
     void timer_callback(){
+        std::thread{std::bind(&UnitreeFrontCamera::publish_msg, this)}.detach();
+    }
+
+    void publish_msg(){
         // Publish image
         cap->read(cv_frame_);
         frame_ = *cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", cv_frame_).toImageMsg();
-            
+
         // assign header to image and camera infor
-        header_.stamp = this->now();
+        header_.stamp = this->get_clock()->now();
         frame_.header = header_;
         ci_.header = header_;
-
+        
         // Publish images
-        pub_->publish(frame_);
-
+        pub_->publish(std::move(frame_));
         // Publish camera info
         pub_ci_->publish(ci_);
     }

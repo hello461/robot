@@ -15,10 +15,9 @@ def generate_launch_description():
     get_bringup_pkg = get_package_share_directory("nav2_bringup")
     go2_core_pkg = get_package_share_directory("go2_core")
     go2_perception_pkg = get_package_share_directory("go2_perception")
-    # get package shared: client_service
     client_service_pkg = get_package_share_directory("client_service")
 
-    use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='false')
+    use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='False')
 
     map_yaml_path = launch.substitutions.LaunchConfiguration(
         'map', default=os.path.join('map1.yaml'))
@@ -29,9 +28,18 @@ def generate_launch_description():
     rviz_config_dir = os.path.join(get_nav2_pkg, 'config', 'nav2_config.rviz')
 
     # Launch file containing nav2
+    # nav2_compose_launch = Node(
+    #     package='rclcpp_components',
+    #     executable='component_container',
+    #     name='nav2_container'
+    # ),
     nav2_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(get_bringup_pkg, "launch", "navigation_launch.py")),
-        launch_arguments=[("params_file", nav2_param_path), ("use_sim_time", use_sim_time), ("map", map_yaml_path)]
+        launch_arguments=[
+            ("map", map_yaml_path),
+            ("params_file", nav2_param_path), 
+            ("use_sim_time", use_sim_time), 
+        ]
     )
 
     # Launch client service
@@ -39,7 +47,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(os.path.join(client_service_pkg, "launch", "pub2server.launch.py"))
     )
 
-    # ========map_server=========
+    # ===========map_server===========
     map_server = Node(
         package='nav2_map_server',
         executable='map_server',
@@ -52,7 +60,7 @@ def generate_launch_description():
         }]
     )
 
-    # =======AMCL========
+    # ==========AMCL============
     amcl = Node(
         package='nav2_amcl',
         executable='amcl',
@@ -140,8 +148,7 @@ def generate_launch_description():
         footprintToLink,
         lowStateToIMU,
         robot_control,
-#        front_camera,
-        # init_pos,
+        ## init_pos,
         map_server,
         amcl,
         lifecycle_manager,
@@ -149,5 +156,5 @@ def generate_launch_description():
         go2_robot_localization,
         rviz2,
         go2_pointcloud_launch,
-        client_service_launch
+        ## client_service_launch
     ])

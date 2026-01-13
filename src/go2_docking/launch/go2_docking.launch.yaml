@@ -41,10 +41,20 @@ launch:
         plugin: dockingPoseCompose::DetectedDockPose
         name: detected_docking_pose
         namespace: dockingPoseCompose
+        extra_arg:
+        - name: use_intra_process_comms
+          value: "True"
 
 # - node:
-#     pkg: "go2_docking"
-#     exec: "go2_docking"
-#     name: "detected_docking_pose"
+#     package: opennav_docking
+#     executable: opennav_docking
+#     name: docking_server
+#     output: screen
+#     parameters:
+#     - from: $(find-pkg-share go2_docking)/config/dock_params.yaml
+# - node:
+#     pkg: go2_docking
+#     exec: DetectedDockPose"
+#     name: detected_docking_pose"
 
       
