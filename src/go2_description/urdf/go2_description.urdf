@@ -76,6 +76,30 @@
     <axis
       xyz="0 0 0" />
   </joint>
+
+  <link
+    name="Front_camera"
+    type="fixed" dont_collapse="true">
+    <visual>
+      <geometry>
+        <cylinder length="0.01" radius="0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint
+    name="Front_camera_joint"
+    type="fixed" dont_collapse="true">
+    <origin
+      xyz="0.04 0 0.039"
+      rpy="0 0 0"/>
+    <parent
+      link="Head_upper"/>
+    <child
+      link="Front_camera"/>
+    <axis
+      xyz="0 0 0"/>
+  </joint>
+
   <link
     name="Head_lower">
     <inertial>
