@@ -14,7 +14,7 @@ class DetectedDockPose : public rclcpp::Node{
 public:
     DetectedDockPose(const rclcpp::NodeOptions& options) : Node("detected_dock_pose", options){
         // declare parameters with defaul values
-        this->declare_parameter("parent_frame","camera");
+        this->declare_parameter("parent_frame","Front_camera");
         this->declare_parameter("child_frame", "tag36h11.1");
 
         // get values of parameters

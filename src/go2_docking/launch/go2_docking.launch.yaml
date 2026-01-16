@@ -45,18 +45,11 @@ launch:
         - name: use_intra_process_comms
           value: "True"
 
-
-
 # - node:
-#     package: opennav_docking
-#     executable: opennav_docking
+#     pkg: opennav_docking
+#     exec: opennav_docking
 #     name: docking_server
 #     output: screen
-#     parameters:
+#     param:
 #     - from: $(find-pkg-share go2_docking)/config/dock_params.yaml
-# - node:
-#     pkg: go2_docking
-#     exec: DetectedDockPose"
-#     name: detected_docking_pose"
-
       

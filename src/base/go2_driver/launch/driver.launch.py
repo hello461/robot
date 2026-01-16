@@ -16,7 +16,7 @@ def generate_launch_description():
     ## Add a switch to start rviz2
     use_rviz = DeclareLaunchArgument(
         name="use_rviz",
-        default_value="true"      # Use it for debugging, close it when running SLAM, and open the corresponding rviz2 in the main program.
+        default_value="false"      # Use it for debugging, close it when running SLAM, and open the corresponding rviz2 in the main program.
     )
 
     return LaunchDescription([
