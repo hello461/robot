@@ -10,15 +10,15 @@ docking_server:
     base_frame: "base_link"
     fixed_frame: "odom"
     dock_backwards: false
-    dock_prestaging_tolerance: 0.5
+    dock_prestaging_tolerance: 0.25
  
     # Types of docks
     dock_plugins: ['rosmaster_x3_dock']
     rosmaster_x3_dock:
-      plugin: 'opennav_docking::SimpleNonChargingDock'
+      plugin: 'opennav_docking::SimpleChargingDock'
       docking_threshold: 0.02
-      staging_x_offset: 0.75
-      staging_yaw_offset: 3.14
+      staging_x_offset: -0.25 # Behind dock
+      staging_yaw_offset: 0.0 # Robot move strange forward to dock
       use_external_detection_pose: true
       use_battery_status: false
       use_stall_detection: false
@@ -35,7 +35,11 @@ docking_server:
       filter_coef: 0.1
  
     # Dock instances
-    dock_database: $(find-pkg-share go2_docking)/config/dock_database.yaml
+    docks: ['home_dock']
+    home_dock:
+      type: 'rosmaster_x3_dock'
+      frame: map
+      pose: [0.0, 0.0, 0.0]
  
     controller:
       k_phi: 3.0

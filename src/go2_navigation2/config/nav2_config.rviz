@@ -143,7 +143,7 @@ Visualization Manager:
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: false
+      Show Names: true
       Tree:
         map:
           odom:
@@ -260,7 +260,7 @@ Visualization Manager:
       Value: false
     - Alpha: 1
       Class: rviz_default_plugins/Map
-      Color Scheme: map
+      Color Scheme: raw
       Draw Behind: true
       Enabled: true
       Name: Map

@@ -91,7 +91,7 @@
     type="fixed" dont_collapse="true">
     <origin
       xyz="0.04 0 0.039"
-      rpy="1.5708 0 1.5708"/>
+      rpy="0 0 0"/>
     <parent
       link="Head_upper"/>
     <child

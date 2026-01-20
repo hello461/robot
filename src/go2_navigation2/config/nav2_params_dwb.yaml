@@ -121,7 +121,7 @@ bt_navigator:
 controller_server:
   ros__parameters:
     use_sim_time: False
-    controller_frequency: 20.0  # Controller update frequency
+    controller_frequency: 15.0  # Controller update frequency Decrease controller frequently 20->15
     costmap_update_timeout: 0.30
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.5
@@ -142,9 +142,9 @@ controller_server:
     general_goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.3  # Position tolerance (meters)
-      yaw_goal_tolerance: 0.25  # Angular tolerance (radians)
-    
+      xy_goal_tolerance: 0.15  # Position tolerance (meters)
+      yaw_goal_tolerance: 0.10  # Angular tolerance (radians)
+      
     # DWB controller (recommended for differential robots)
     FollowPath:
       plugin: "dwb_core::DWBLocalPlanner"
@@ -169,8 +169,8 @@ controller_server:
       sim_time: 1.7
       linear_granularity: 0.05
       angular_granularity: 0.025
-      transform_tolerance: 0.2
-      xy_goal_tolerance: 0.25
+      transform_tolerance: 0.15  # Decrease 0.2->0.15
+      xy_goal_tolerance: 0.15 # Decrease goal tolarence (0.25->0.15)
       trans_stopped_velocity: 0.25
       short_circuit_trajectory_evaluation: True
       stateful: True
@@ -194,14 +194,14 @@ local_costmap:
     ros__parameters:
       use_sim_time: False
       update_frequency: 5.0  # Update frequency
-      publish_frequency: 4.0
+      publish_frequency: 5.0
       global_frame: odom
       robot_base_frame: base_link
       rolling_window: true  # Scrolling window
       width: 3    # Map width (meters)
       height: 3   # Map elevation (meters)
       resolution: 0.05    # Resolution (meters/pixel)
-      robot_radius: 0.22  # Robot radius (meters) - Adjust according to your robot
+      robot_radius: 0.30  # Robot radius (meters) - Adjust according to your robot Increase 0.22->0.3
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"

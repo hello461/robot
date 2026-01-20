@@ -29,7 +29,7 @@ public:
 
         // create a publisher for the dock pose
         dock_pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(
-            "detected_pose", 10);
+            "/detected_dock_pose", 10);
 
         // create a time wall that will trigger pose update
         timer_  = this->create_wall_timer(100ms, std::bind(&DetectedDockPose::timer_callback, this));

@@ -16,15 +16,25 @@ def generate_launch_description():
     go2_core_pkg = get_package_share_directory("go2_core")
     go2_perception_pkg = get_package_share_directory("go2_perception")
     client_service_pkg = get_package_share_directory("client_service")
+    # Get shared package for docking
+    get_pose_docking_pkg = get_package_share_directory("go2_docking")
 
+    # Paramter for simulation
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time', default='False')
 
+    # Map file name
     map_yaml_path = launch.substitutions.LaunchConfiguration(
         'map', default=os.path.join('map1.yaml'))
     
+    # Nav2 configuration file
     nav2_param_path = launch.substitutions.LaunchConfiguration(
         'params_file', default=os.path.join(get_nav2_pkg, 'config', 'nav2_params_dwb.yaml'))
     
+    # Docking configuration file
+    docking_param_path = launch.substitutions.LaunchConfiguration(
+        'docking_file', default=os.path.join(get_pose_docking_pkg, 'config', 'dock_params.yaml'))
+    
+    # Rviz2 configuration file
     rviz_config_dir = os.path.join(get_nav2_pkg, 'config', 'nav2_config.rviz')
 
     # Launch file containing nav2
@@ -47,7 +57,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(os.path.join(client_service_pkg, "launch", "pub2server.launch.py"))
     )
 
-    # ===========map_server===========
+    # =========== map_server ===========
     map_server = Node(
         package='nav2_map_server',
         executable='map_server',
@@ -60,7 +70,7 @@ def generate_launch_description():
         }]
     )
 
-    # ==========AMCL============
+    # ========== AMCL ============
     amcl = Node(
         package='nav2_amcl',
         executable='amcl',
@@ -69,7 +79,16 @@ def generate_launch_description():
         parameters=[nav2_param_path, {'use_sim_time': use_sim_time}]
     )
 
-    # ========lifecycle_manager==========
+    # ========== Docking ===========
+    docking = Node(
+        package='opennav_docking',
+        executable='opennav_docking',
+        name='docking_server',
+        output='screen',
+        parameters=[docking_param_path, {'use_sim_time': use_sim_time}]
+    )
+
+    # ======== lifecycle_manager ==========
     lifecycle_manager = Node(
         package='nav2_lifecycle_manager',
         executable='lifecycle_manager',
@@ -78,8 +97,13 @@ def generate_launch_description():
         parameters=[{
             'use_sim_time': use_sim_time,
             'autostart': True,
-            'node_names': ['map_server', 'amcl']
+            'node_names': ['map_server', 'amcl', 'docking_server']
         }]
+    )
+
+    # ==============Detected dock pose publisher===============
+    detected_apritag_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(get_pose_docking_pkg, "launch", "go2_docking.launch.yaml"))
     )
 
     # Odometer Fusion IMU
@@ -89,7 +113,7 @@ def generate_launch_description():
             )
         )
     
-    # --- RViz2 ---
+    # ============= RViz2 ============
     rviz2 = Node(
         package='rviz2',
         executable='rviz2',
@@ -110,21 +134,24 @@ def generate_launch_description():
         )
     )
 
-    # Lowstate to IMU node
+    # TF broadcaster IMU -> Base_link
+    # Publish IMU message, Battery information
     lowStateToIMU = Node(
         package="go2_driver",
         executable="lowstate_to_imu",
         name="lowSate_to_IMU"
     )
 
-    # Run driver node
+    # TF broadcaster Base_link -> Base_footprint
     footprintToLink = Node(
         package="go2_driver",
         executable="footprint_to_link",
         name="footprint_to_link"
     )
 
-    # Footprint to link node
+    # TF broadcaster Base_footprint -> Odom
+    # Publish PostStamp Base_footprint -> Odom
+    # (Not run) Publish Joint status
     driver = Node(
         package="go2_driver",
         executable="driver",
@@ -148,7 +175,7 @@ def generate_launch_description():
         footprintToLink,
         lowStateToIMU,
         robot_control,
-        ## init_pos,
+        docking,
         map_server,
         amcl,
         lifecycle_manager,
@@ -156,5 +183,7 @@ def generate_launch_description():
         go2_robot_localization,
         rviz2,
         go2_pointcloud_launch,
-        ## client_service_launch
+        # detected_apritag_launch,
+        # client_service_launch
+        # init_pos,
     ])

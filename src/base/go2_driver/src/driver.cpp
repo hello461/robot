@@ -66,7 +66,6 @@ private:
   // Subscribe to lower-level information to obtain joint status, organize messages, and publish them.
   void low_state_cb(const unitree_go::msg::LowState::SharedPtr low_state)
   {
-
     sensor_msgs::msg::JointState joint_state;
 
     // Organizational data

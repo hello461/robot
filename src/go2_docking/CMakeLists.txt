@@ -15,9 +15,10 @@ find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(rclcpp_components REQUIRED)
+find_package(rclcpp_action REQUIRED)
+find_package(opennav_docking_msgs REQUIRED)
 
-#add_executable(go2_docking src/detected_dock_pose_pub.cpp)
-
+add_executable(start_docking_client src/start_homming.cpp)
 add_library(go2_docking_compose SHARED src/detected_dock_pose_pub.cpp)
 
 ament_target_dependencies(
@@ -28,12 +29,21 @@ ament_target_dependencies(
   rclcpp_components
 )
 
+ament_target_dependencies(
+  start_docking_client
+  rclcpp
+  rclcpp_action
+  opennav_docking_msgs
+)
+
 rclcpp_components_register_node(
   go2_docking_compose
   PLUGIN "dockingPoseCompose::DetectedDockPose"
   EXECUTABLE detected_dock_pose_pub
 )
+
 ament_export_targets(export_go2_docking_compose)
+
 install(
   TARGETS go2_docking_compose
   EXPORT  export_go2_docking_compose
@@ -42,10 +52,10 @@ install(
   RUNTIME DESTINATION bin
 )
 
-#install(TARGETS go2_docking
-#  DESTINATION lib/${PROJECT_NAME})
+install(TARGETS start_docking_client
+  DESTINATION lib/${PROJECT_NAME})
 
-install(DIRECTORY launch
+install(DIRECTORY launch config
   DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)

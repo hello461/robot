@@ -36,7 +36,7 @@ private:
     void state_cb(const unitree_go::msg::SportModeState::SharedPtr state_msg)
     {
         // Create object
-        body_height_ = state_msg->body_height + 0.057; // 0.057. From the urdf file, we learned...
+        body_height_ = state_msg->body_height + 0.057; // 0.057. From the urdf file
     }
 
     // Timer callback function
