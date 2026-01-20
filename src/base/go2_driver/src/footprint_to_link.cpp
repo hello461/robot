@@ -44,15 +44,26 @@ private:
     {
         // Create object
         geometry_msgs::msg::TransformStamped transform_;
+        // Add Font_camera -> base_link object
+        geometry_msgs::msg::TransformStamped transform2_;
+
         // Organizational message
         transform_.header.stamp = this->get_clock()->now();
         transform_.header.frame_id = "base_footprint";
         transform_.child_frame_id = "base_link";
 
+        transform2_.header.stamp = transform_.header.stamp;
+        transform2_.header.frame_id = "base_link";
+        transform2_.child_frame_id = "Front_camera";
+
         // The translation vector from base_footprint to base_link only has a value on the z-axis.
         transform_.transform.translation.x = 0.0;
         transform_.transform.translation.y = 0.0;
         transform_.transform.translation.z = body_height_;
+
+        transform2_.transform.translation.x = 0.325;
+        transform2_.transform.translation.y = 0.0;
+        transform2_.transform.translation.z = 0.049;
 
         // The rotation vector from base_footprint to base_link, a unit vector, has no value.
         tf2::Quaternion qtn;
@@ -62,7 +73,13 @@ private:
         transform_.transform.rotation.z = qtn.z();
         transform_.transform.rotation.w = qtn.w();
 
+        transform2_.transform.rotation.x = 0.0;
+        transform2_.transform.rotation.y = 0.0;
+        transform2_.transform.rotation.z = 0.0;
+        transform2_.transform.rotation.w = 1.0;
+
         tf_broadcaster_->sendTransform(transform_);
+        tf_broadcaster_->sendTransform(transform2_);
     }
 };
 
