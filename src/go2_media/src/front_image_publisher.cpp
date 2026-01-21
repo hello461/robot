@@ -25,7 +25,7 @@ public:
 
         // Declare parameters
         this->declare_parameter("camera_name", "front");
-        this->declare_parameter("camera_info_url", "package://go2_media/config/camera_config.yaml");
+        this->declare_parameter("camera_info_url", "package://go2_media/config/camera_config_2.yaml");
         this->declare_parameter("frame_id", "Front_camera");
 
         // Get value of parameters

@@ -201,7 +201,7 @@ local_costmap:
       width: 3    # Map width (meters)
       height: 3   # Map elevation (meters)
       resolution: 0.05    # Resolution (meters/pixel)
-      robot_radius: 0.30  # Robot radius (meters) - Adjust according to your robot Increase 0.22->0.3
+      robot_radius: 0.4  # Robot radius (meters) - Adjust according to your robot Increase 0.22->0.3
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"

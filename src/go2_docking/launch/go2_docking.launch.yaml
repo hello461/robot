@@ -29,7 +29,7 @@ launch:
         namespace: apriltag
         remap:
         - from: /apriltag/image_rect
-          to: /camera/image_raw
+          to: /camera/image_rect
         param:
         - from: $(find-pkg-share apriltag_ros)/cfg/tags_36h11.yaml
         extra_arg:

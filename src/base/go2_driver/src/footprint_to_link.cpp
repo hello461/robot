@@ -73,10 +73,10 @@ private:
         transform_.transform.rotation.z = qtn.z();
         transform_.transform.rotation.w = qtn.w();
 
-        transform2_.transform.rotation.x = 0.0;
-        transform2_.transform.rotation.y = 0.0;
-        transform2_.transform.rotation.z = 0.0;
-        transform2_.transform.rotation.w = 1.0;
+        transform2_.transform.rotation.x = -0.5;
+        transform2_.transform.rotation.y = 0.5;
+        transform2_.transform.rotation.z = -0.5;
+        transform2_.transform.rotation.w = 0.5;
 
         tf_broadcaster_->sendTransform(transform_);
         tf_broadcaster_->sendTransform(transform2_);

@@ -31,6 +31,8 @@ ros2 run camera_info camera_info_publisher --ros-args -p camera_info_url:="packa
 ### Calibrate camera
 ros2 run camera_calibration cameracalibrator --no-service-check --size 8x6 --square 0.025 image:=/camera/image_raw
 ros2 run camera_calibration cameracalibrator --no-service-check --size 6x4 --square 0.037 image:=/camera/image_raw
+ros2 run camera_calibration cameracalibrator --no-service-check --size 2x2 --square 0.1 image:=/camera/image_raw
+ros2 run go2_media front_image_publisher
 
 ### Save map
 ros2 run nav2_map_server map_saver_cli -f map1 --ros-args -p map_subscribe_transient_local:=true
